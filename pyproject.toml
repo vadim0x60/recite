@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "recite"
+name = "tex-recite"
 version = "0.1.0"
 description = "Migrate a LaTeX document from one bibliography to another"
 authors = ["Vadim Liventsev <dev@vadim.me>"]

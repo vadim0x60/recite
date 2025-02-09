@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-pip install recite
+pip install tex-recite
 ```
 
 ## Usage
