@@ -1,5 +1,6 @@
 from fire import Fire
 from TexSoup import TexSoup
+from TexSoup.data import BraceGroup
 import bibtexparser as b
 from pathlib import Path
 from unisim import TextSim
@@ -26,9 +27,11 @@ def recite(doc, old_bib, new_bib):
     key_update = {k.key: v.key for k, v in zip(match['query'], match['target'])}
 
     for cite in doc.find_all('cite'):
-        keys = cite.string.replace(' ', '').split(',')
-        keys = [key_update.get(k, k) for k in keys]
-        cite.string = ','.join(keys)
+        for arg in cite.args:
+            if isinstance(arg, BraceGroup):
+                keys = arg.string.replace(' ', '').split(',')
+                keys = [key_update.get(k, k) for k in keys]
+                arg.string = ','.join(keys)
 
     return str(doc)
 
